@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperHéros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios@latest"></script>
+  </head>
+  <body>
+    <div id="navbarplaceholder"></div>
+
+    <div id="app" class="container my-5">
+      <h1 class="text-center my-4">Détail du SuperHéros</h1>
+
+      <div v-if="superhero" class="card mx-auto" style="width: 18rem;">
+        <img :src="superhero.images.lg" class="card-img-top" :alt="'Image de ' + superhero.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ superhero.name }}</h5>
+          <p class="card-text">
+            <strong>ID :</strong> {{ superhero.id }}<br>
+            <strong>Nom :</strong> {{ superhero.name }}<br>
+            <strong>Intelligence :</strong> {{ superhero.powerstats.intelligence }}<br>
+            <strong>Force :</strong> {{ superhero.powerstats.strength }}<br>
+            <strong>Vitesse :</strong> {{ superhero.powerstats.speed }}<br>
+            <strong>Durabilité :</strong> {{ superhero.powerstats.durability }}<br>
+            <strong>Pouvoir :</strong> {{ superhero.powerstats.power }}<br>
+            <strong>Combat :</strong> {{ superhero.powerstats.combat }}
+          </p>
+        </div>
+      </div>
+
+      <div v-else>
+        <h5 class="text-center text-muted">Chargement des détails du super-héros...</h5>
+      </div>
+    </div>
+
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbarplaceholder').innerHTML = data;
+        })
+        .catch(error => console.error('Erreur lors du chargement de la barre de navigation:', error));
+
+      const app = Vue.createApp({
+        data() {
+          return {
+            superhero: null
+          };
+        },
+        mounted() {
+          const params = new URLSearchParams(window.location.search);
+          const id = params.get('id');
+
+          if (id) {
+            axios
+              .get(`https://akabab.github.io/superhero-api/api/id/${id}.json`)
+              .then(response => {
+                this.superhero = response.data;
+              })
+              .catch(error => console.error("Erreur lors de la récupération des données :", error));
+          }
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
