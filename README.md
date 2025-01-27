@@ -23,14 +23,17 @@ Voici la structure des dossiers et fichiers du projet :
 Superheros_Project/
 │
 ├── src/                # Contient le code source du projet
-│   ├── index.html      # Page principale de l'application
-│   ├── details.html    # Page pour afficher les détails d'un super-héros
-│   ├── style.css       # Fichier CSS pour les styles personnalisés
-│   └── script.js       # Fichier JavaScript principal pour gérer les interactions utilisateur
-│   └── navbar.html     # Fichier HTML pour la barre de navigation
+│   ├── auteur.html      # Page qui affiche les auteur du site 
+│   ├── details.html     # Page pour afficher les détails d'un super-héros
+│   ├── liste.html       # Page qui liste tous les superhéros
+│   ├── matcher.html     # Page qui permet de rechercher par rapoort au stats
+│   ├── navbar.html      # Fichier HTML pour la barre de navigation
+│   └── Tp.html          # Page de base du site avec la recherche par nom  
 │
 └── docs/               # Dossier pour la documentation
-    └── README.md       # Ce fichier README
+    ├── README.md        # Ce fichier README
+    └── bilanTP_DefossezThep.pdf    # Compte rendu du tp.
+    
 ```
 ---
 
