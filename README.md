@@ -6,7 +6,7 @@ Ce projet est une application web permettant aux utilisateurs de rechercher des 
 ---
 
 
-##Fonctionnalités
+## Fonctionnalités
 Barre de recherche pour trouver des super-héros par leur nom.
 Affichage dynamique des résultats avec le nom, l'image, et les statistiques des super-héros.
 Affichage optionnel des statistiques de pouvoirs (basé sur une case à cocher).
